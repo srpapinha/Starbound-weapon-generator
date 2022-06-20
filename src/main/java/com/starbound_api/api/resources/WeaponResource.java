@@ -8,17 +8,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.starbound_api.api.domain.Element;
-import com.starbound_api.api.services.ElementServices;
+import com.starbound_api.api.domain.Weapon;
+import com.starbound_api.api.services.WeaponServices;
 
 @RestController
-@RequestMapping(value = "/elements")
-public class ElementResource {
+@RequestMapping(value = "/weapons")
+public class WeaponResource {
     @Autowired
-    private ElementServices elementServices;
+    private WeaponServices WeaponServices;
 
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<List<Element>> list() {
-        return ResponseEntity.ok(elementServices.list());
+    public ResponseEntity<List<Weapon>> list() {
+        return ResponseEntity.ok(WeaponServices.list());
     }
 }
