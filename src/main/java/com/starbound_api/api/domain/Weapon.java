@@ -2,6 +2,7 @@ package com.starbound_api.api.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,15 +15,17 @@ public class Weapon implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String weaponName;
+    
+    @Column(unique=true)
+    private String name;
     private String weaponType;
     private Boolean twoHanded;
 
     public Weapon() {}
 
-    public Weapon(Integer id, String weaponName, String weaponType, Boolean twoHanded) {
+    public Weapon(Integer id, String name, String weaponType, Boolean twoHanded) {
         this.id = id;
-        this.weaponName = weaponName;
+        this.name = name;
         this.weaponType = weaponType;
         this.twoHanded = twoHanded;
     }
@@ -35,12 +38,12 @@ public class Weapon implements Serializable{
         this.id = id;
     }
 
-    public String getWeaponName() {
-        return weaponName;
+    public String getname() {
+        return name;
     }
 
-    public void setWeaponName(String weaponName) {
-        this.weaponName = weaponName;
+    public void setname(String name) {
+        this.name = name;
     }
 
     public String getWeaponType() {

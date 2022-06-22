@@ -1,6 +1,11 @@
 package com.starbound_api.api;
 
+import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -36,16 +41,21 @@ public class ApiApplication implements CommandLineRunner {
 		eletric= new Element(null, "eletric");
 		elementRepository.saveAll(Arrays.asList(fire, ice, poison, eletric));
 
-		Ability abi1, abi2, abi3;
-		abi1 = new Ability(null, "broadsword", "parry");
-		abi2 = new Ability(null, "broadsword", "bladecharge");
-		abi3 = new Ability(null, "broadsword", "downstab");
-		abilityRepository.saveAll(Arrays.asList(abi1, abi2, abi3));
+		Scanner scanner = new Scanner(new File("C:\\Users\\Danie\\OneDrive\\Documentos\\teste\\csv\\weapons.csv"));
+		List<Weapon> weapons = new LinkedList<>();
+		while(scanner.hasNext()) {
+			weapons.add(new Weapon(null, scanner.next(), scanner.next(), scanner.nextBoolean()));
+		}
+		scanner.close();
+		weaponRepository.saveAll(weapons);
 
-		Weapon wea1, wea2, wea3;
-		wea1 = new Weapon(null, "broadsword", "melee", true);
-		wea2 = new Weapon(null, "hammer", "melee", true);
-		wea3 = new Weapon(null, "spear", "melee", true);
-		weaponRepository.saveAll(Arrays.asList(wea1, wea2, wea3));
+		scanner = new Scanner(new File("C:\\Users\\Danie\\OneDrive\\Documentos\\teste\\csv\\abilities.csv"));
+		List<Ability> abilities = new LinkedList<>();
+		while(scanner.hasNext()) {
+			Weapon obj = weaponRepository.findByName(scanner.next());
+			abilities.add(new Ability(null, obj, scanner.next()));
+		}
+		scanner.close();
+		abilityRepository.saveAll(abilities);
 	}
 }

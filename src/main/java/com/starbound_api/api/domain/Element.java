@@ -14,13 +14,13 @@ public class Element implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String element;
+    private String name;
     
     public Element() {}
 
-    public Element(Integer id, String element) {
+    public Element(Integer id, String name) {
         this.id = id;
-        this.element = element;
+        this.name = name;
     }
 
     public Integer getId() {
@@ -31,11 +31,11 @@ public class Element implements Serializable{
         this.id = id;
     }
 
-    public String getElement() {
-        return element;
+    public String getName() {
+        return name;
     }
 
     public void setElement(String element) {
-        this.element = element;
+        this.name = element;
     }
 }

@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Ability implements Serializable{
@@ -13,15 +15,18 @@ public class Ability implements Serializable{
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String weapon;
-    private String ability_id;
+
+    @OneToOne
+    @JoinColumn(name="weapon_id")
+    private Weapon weapon;
+    private String name;
 
     public Ability() {}
 
-    public Ability(Integer id, String weapon, String ability_id) {
+    public Ability(Integer id, Weapon weapon, String name) {
         this.id = id;
         this.weapon = weapon;
-        this.ability_id = ability_id;
+        this.name = name;
     }
 
     public Integer getId() {
@@ -32,20 +37,20 @@ public class Ability implements Serializable{
         this.id = id;
     }
 
-    public String getWeapon() {
+    public Weapon getWeapon() {
         return weapon;
     }
 
-    public void setWeapon(String weapon) {
+    public void setWeapon(Weapon weapon) {
         this.weapon = weapon;
     }
 
-    public String getAbility_id() {
-        return ability_id;
+    public String getName() {
+        return name;
     }
 
-    public void setAbility_id(String ability_id) {
-        this.ability_id = ability_id;
+    public void setName(String name) {
+        this.name = name;
     }
 
     

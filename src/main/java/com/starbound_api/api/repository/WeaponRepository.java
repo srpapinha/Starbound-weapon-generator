@@ -7,5 +7,5 @@ import com.starbound_api.api.domain.Weapon;
 
 @Repository
 public interface WeaponRepository extends JpaRepository<Weapon, Integer> {
-    
+    public Weapon findByName(String name);
 }
