@@ -7,5 +7,5 @@ import com.starbound_api.api.domain.Element;
 
 @Repository
 public interface ElementRepository extends JpaRepository<Element, Integer> {
-    
+    Element findByName(String name);
 }

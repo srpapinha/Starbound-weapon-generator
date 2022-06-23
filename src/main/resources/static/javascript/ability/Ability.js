@@ -1,13 +1,11 @@
 class Ability {
-    baseDps;
     fireTime;
-    knockback;
-    energyUsage;
+    baseDps;
+    projectileType;
 
-    constructor(fireTime, baseDps, knockback, energyUsage) {
-        this.fireTime = fireTime != "" ? fireTime : undefined;
-        this.baseDps = baseDps != "" ? baseDps : undefined;
-        this.knockback = knockback != "" ? knockback : undefined;
-        this.energyUsage = energyUsage != "" ? energyUsage : undefined;
+    constructor(fireTime, baseDps, projectileType) {
+        this.fireTime = valid(fireTime);
+        this.baseDps = valid(baseDps);
+        this.projectileType = valid(projectileType);
     }
 }

@@ -16,4 +16,8 @@ public class ElementServices {
     public List<Element> list() {
         return elementRepository.findAll();
     }
+
+    public Element find(String name) {
+        return elementRepository.findByName(name);
+    }
 }

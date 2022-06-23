@@ -9,13 +9,13 @@ class Weapon {
     altAbility;
     
     constructor(shortdescription, description, rarity, level, elementalType, primaryAbility, altAbilityType, altAbility) {
-        this.shortdescription = shortdescription != "" ? shortdescription : undefined;
-        this.description = description != "" ? description : undefined;
-        this.rarity = rarity != "" ? rarity : undefined;
-        this.elementalType = elementalType != "" ? elementalType : undefined;
-        this.primaryAbility = primaryAbility != "" ? primaryAbility : undefined;
-        this.level = level != "" ? level : undefined;
-        this.altAbilityType = altAbilityType != "" ? altAbilityType : undefined;
-        this.altAbility = altAbility != "" ? altAbility : undefined;
+        this.shortdescription = valid(shortdescription); 
+        this.description = valid(shortdescription);
+        this.rarity = valid(rarity);
+        this.elementalType = valid(elementalType);
+        this.primaryAbility = primaryAbility;
+        this.level = valid(level);
+        this.altAbilityType = valid(altAbilityType);
+        this.altAbility = altAbility;
     }
 }

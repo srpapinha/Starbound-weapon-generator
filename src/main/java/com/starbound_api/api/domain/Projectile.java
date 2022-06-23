@@ -1,11 +1,15 @@
 package com.starbound_api.api.domain;
 
 import java.io.Serializable;
+import java.sql.Blob;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Projectile implements Serializable{
@@ -16,6 +20,9 @@ public class Projectile implements Serializable{
     private Integer id;
     private String source;
     private String name;
+    
+    @JsonIgnore
+    private Blob image;
 
     public Projectile() {}
 
@@ -47,5 +54,14 @@ public class Projectile implements Serializable{
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @JsonIgnore
+    public Blob getImage() {
+        return image;
+    }
+
+    public void setImage(Blob image) {
+        this.image = image;
     }
 }
