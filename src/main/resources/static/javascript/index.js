@@ -44,7 +44,7 @@ function autocomplete(element, callback, image) {
         a = document.createElement("div");
         a.setAttribute("class", "autocomplete-items");
         this.parentNode.appendChild(a);
-        filtered = array.filter(e => e.match(`^${this.value}.*`)).slice(0, 30).sort();
+        filtered = array.filter(e => e.match(`^${this.value}.*`)).slice(0, 10).sort();
         filtered.forEach(e => {
             b = document.createElement("div");
             b.innerHTML += e;
@@ -77,14 +77,17 @@ function generate() {
             return;
         }
         var type = getWeapons().find(e => weapontype.value);
-        if(type == undefined) {
+        if(type === undefined) {
             alert("Choose valid weapon");
             return;
         }
         var ability1 = new Ability(parseInt(firetime.value), parseInt(damage.value), projectile1.value);
         var ability2 = new Ability(undefined, parseInt(damage.value), projectile2.value);
+
+        if(ability1.IsEmpty()) ability1 = undefined;
+        if(ability2.IsEmpty()) ability2 = undefined;
         
-        var weapon = new Weapon("Custom weapon", description.value, rarity.value, parseInt(level.value), element.value, ability1, altAbility.value, ability2);
+        var weapon = new Weapon("Custom weapon", description.value, rarity.value, parseInt(level.value), element.value, primaryAbility.value, ability1, altAbility.value, ability2);
         
         result.value = `/spawnitem rare${weapontype.value} 1 '${JSON.stringify(weapon)}'`;
     })
@@ -95,11 +98,13 @@ function copy() {
 }
 
 function valid(variable) {
-    
-    if(variable === "" || variable === null || isNaN(variable)) {
+    if(variable === null) return undefined;
+    if(typeof variable === "string" && variable.length === 0) {
         return undefined;
     }
-    console.log(variable);
+    if(typeof variable === "number" && isNaN(variable)) {
+        return undefined;
+    }
     return variable;
 }
 

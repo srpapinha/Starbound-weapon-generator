@@ -3,11 +3,11 @@ package com.starbound_api.api.domain;
 import java.io.Serializable;
 import java.sql.Blob;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -19,6 +19,7 @@ public class Projectile implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String source;
+    @Column(unique = true)
     private String name;
     
     @JsonIgnore

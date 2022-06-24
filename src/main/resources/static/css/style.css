@@ -7,7 +7,7 @@ h1 {
 }
 
 body {
-    background-color: black;
+    background-image: url("../images/BG.jpg");
 }
 
 .container {
@@ -22,7 +22,7 @@ body {
 }
 
 .autocomplete{
-    margin: 4px;
+    margin: 1px;
     width: 100%;
     position: relative;
 }

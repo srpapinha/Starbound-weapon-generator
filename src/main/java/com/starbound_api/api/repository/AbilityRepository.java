@@ -10,5 +10,5 @@ import com.starbound_api.api.domain.Weapon;
 
 @Repository
 public interface AbilityRepository extends JpaRepository<Ability, Integer> {
-    List<Ability> findByWeapon(Weapon weapon);
+    public List<Ability> findByWeapon(Weapon weapon);
 }

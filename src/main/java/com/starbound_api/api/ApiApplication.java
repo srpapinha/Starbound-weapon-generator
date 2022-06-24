@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 import javax.sql.rowset.serial.SerialBlob;
@@ -63,8 +64,8 @@ public class ApiApplication implements CommandLineRunner {
 		scanner = new Scanner(new File("C:\\Users\\Danie\\OneDrive\\Documentos\\teste\\csv\\abilities.csv"));
 		List<Ability> abilities = new LinkedList<>();
 		while(scanner.hasNext()) {
-			Weapon obj = weaponRepository.findByName(scanner.next());
-			abilities.add(new Ability(null, obj, scanner.next()));
+			Optional<Weapon> obj = weaponRepository.findByName(scanner.next());
+			abilities.add(new Ability(null, obj.get(), scanner.next()));
 		}
 		scanner.close();
 		abilityRepository.saveAll(abilities);
