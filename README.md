@@ -16,8 +16,9 @@ In order to install and run this project you will need the following programs:
 First clone the project with this command
 ```
 git clone https://github.com/srpapinha/Starbound-weapon-generator.git
+cd Starbound-weapon-generator
 ```
-Probably your database username and password are different so you need to change the properties of this files: 
+Probably your database username and password are different so you need to change the properties of this file: 
 ```
 src\main\resources\application.properties
 ```
