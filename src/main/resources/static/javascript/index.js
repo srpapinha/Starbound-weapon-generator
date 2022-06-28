@@ -74,12 +74,13 @@ function closeList() {
 }
 
 function generate() {
-    document.getElementById("generate").addEventListener("click", function(e) {
+    document.getElementById("generate").addEventListener("click", async function(e) {
         if(weapontype.value === "") {
             alert("Choose the weapon");
             return;
         }
-        var type = getWeapons().find(e => weapontype.value);
+        
+        var type = (await getWeapons()).find(e => weapontype.value);
         if(type === undefined) {
             alert("Choose valid weapon");
             return;
