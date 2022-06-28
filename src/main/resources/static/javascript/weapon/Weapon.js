@@ -1,6 +1,5 @@
 class Weapon {
     shortdescription;
-    description;
     rarity;
     level;
     elementalType;
@@ -9,9 +8,8 @@ class Weapon {
     altAbilityType;
     altAbility;
     
-    constructor(shortdescription, description, rarity, level, elementalType, primaryAbilityType, primaryAbility, altAbilityType, altAbility) {
+    constructor(shortdescription, rarity, level, elementalType, primaryAbilityType, primaryAbility, altAbilityType, altAbility) {
         this.shortdescription = valid(shortdescription); 
-        this.description = valid(shortdescription);
         this.rarity = valid(rarity);
         this.elementalType = valid(elementalType);
         this.primaryAbilityType = valid(primaryAbilityType);

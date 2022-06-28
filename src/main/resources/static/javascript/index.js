@@ -79,7 +79,7 @@ function generate() {
             alert("Choose the weapon");
             return;
         }
-        
+
         var type = (await getWeapons()).find(e => weapontype.value);
         if(type === undefined) {
             alert("Choose valid weapon");
@@ -91,7 +91,7 @@ function generate() {
         if(ability1.IsEmpty()) ability1 = undefined;
         if(ability2.IsEmpty()) ability2 = undefined;
         
-        var weapon = new Weapon("Custom weapon", description.value, rarity.value, parseInt(level.value), element.value, primaryAbility.value, ability1, altAbility.value, ability2);
+        var weapon = new Weapon(description.value, rarity.value, parseInt(level.value), element.value, primaryAbility.value, ability1, altAbility.value, ability2);
         
         result.value = `/spawnitem rare${weapontype.value} 1 '${JSON.stringify(weapon)}'`;
     })
