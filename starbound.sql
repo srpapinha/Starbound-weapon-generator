@@ -97,6 +97,31 @@ INSERT INTO `projectile` VALUES (510,_binary '‰PNG\r\n\Z\n\0\0\0\rIHDR\0\0\0À\0\
 UNLOCK TABLES;
 
 --
+-- Table structure for table `rarity`
+--
+
+DROP TABLE IF EXISTS `rarity`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `rarity` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `image` longblob,
+  `name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `rarity`
+--
+
+LOCK TABLES `rarity` WRITE;
+/*!40000 ALTER TABLE `rarity` DISABLE KEYS */;
+INSERT INTO `rarity` VALUES (1,_binary '‰PNG\r\n\Z\n\0\0\0\rIHDR\0\0\0$\0\0\0$\0\0\0\á\0˜˜\0\0\0tEXtSoftware\0Adobe ImageReadyq\Ée<\0\0\0\ãIDATx\Ú\ì˜=„ F™\Í\Ö6vÀ»i%\r‡°¡\óˆt6şT\î\ê.…±2$3\rFŒo\òü\Ğ\ìû\Î|\0ş‰H\õ\å‚\ïü‹!«w\È\Ì<\ÏIÁ–\ãšBgl†l\ÇÆ˜¬\rTUu\É>CGs\ÇÁ4M\Şêº\n|\â\à]eÛ¶]&8\ç\ç\Ø4MT 5¡µfe½‡\\C©+\Ä#C\å\ZZ–%+8\Ä\Ãkh]×¬\à2Tn†\È­2\Ê}\í±\Z\Ç\ñ»®‹\n´\÷-\Æ\Ğ\í\ÏU)•µ!„5m\Û\"6\ä\îJÃ,¥dÿ\'}\ß¡\Û\í ı\ê#À\0Ÿ€§\è´*\0\0\0\0IEND®B`‚','common'),(2,_binary '‰PNG\r\n\Z\n\0\0\0\rIHDR\0\0\0$\0\0\0$\0\0\0\á\0˜˜\0\0\0tEXtSoftware\0Adobe ImageReadyq\Ée<\0\0IDATx\Ú\ì˜Q\n\Â0@[\ñ,E77x\'Á\ñC\ğN‚2e7p\êU:\×F\ç\è\Çf‹?]HÁül4c/<\Ò@\Ë€Ù‚snOxŠ7—\Û\ÖŒX]f\Ò<\îl8]S\äq\ÓC¦\âE6G-\à”\\Z=E\ÏP]\\ı’g\Ö²4\÷\nüÅ¡»\Ë@µ\çeS±\Â+Ğ˜ˆvSt\r)©PÁ.\áª\0\ì\â6Tj\\C]CZrT°‹G¸‡\ç7‡4\ò.\ÓÁ\í2…lHg$ò¤–¡b2\ÙÁ£k\èY¶\'g´™|\Å\ö\æhş\Û\å…sr®Ç¨\\ww\â\'\×\îı1­F½‚‹ıƒ…uû\ñ•øß 5\ñ`\0Hy\Üx\è\ÑI\0\0\0\0IEND®B`‚','uncommon'),(3,_binary '‰PNG\r\n\Z\n\0\0\0\rIHDR\0\0\0$\0\0\0$\0\0\0\á\0˜˜\0\0\0	pHYs\0\0\0\0\0šœ\0\0\0 cHRM\0\0z%\0\0€ƒ\0\0ùÿ\0\0€\é\0\0u0\0\0\ê`\0\0:˜\0\0o’_\ÅF\0\0„IDATx\Ú\ÔXMJ\Ä0}™\Ô\Ñs\õ\nƒ\nÃ…KzÁ…¸¼À¸p\áÂ…xA™+¨·Áé´¸h£\Ó\Ø4eh2™,Ó¼\Ç\ëû^~ˆ”Mƒ\Òü¡§!¥$M\ó6\"“2{c§À\nGW*8…ˆ\òb¼û\ğ\â•À\ë\á~\ÍS\á)@À\ğş¹±`|t\Ğ+ \r\'\à.Ë‹j†\Ö\'I\Ò+ Zwx\÷Ô­\í‰…’C¾G‘\ó°\Ñ(\î¾u0\'\íŸ[#\â_ÀVB©¶ù¦	\îU	^¸ÁX|úmw\Ş!^JH\ã\Ø)‘\r\0“9<k0š\n½ÿ²YVv\Ô`9œ\è\æ\ÎD»Bz³.3\àÌµ}¥c\Ûß¦K!\Ò\à!^y(\ö«P\Æm\âK!\òŸÌ«\İ\Ø\ó†ªp\ç!­ÀYR§i\Ä\ëÌ\ÔSQ+\Ø9½\0\0¼.;„\Ù&((8¾¬µj]×œ\Ô\ÓÅºŒ\ØN^‹\Ş\\·OÎ½Z\èı\æ*\ğ›«ş>¤”\Ú:>s\nüq{\Õzı0½\ß8‹ŸUyAû\0ûÆ›¬|‚\Î\0\0\0\0IEND®B`‚','rare'),(4,_binary '‰PNG\r\n\Z\n\0\0\0\rIHDR\0\0\0$\0\0\0$\0\0\0\á\0˜˜\0\0\0tEXtSoftware\0Adobe ImageReadyq\Ée<\0\0IDATx\Úbüÿÿ?6À\ÈÈˆ]‚J\0h/#6q&†AXp…L§\İQšZ³=¤]1\Â\Ò\Ì\Å\í¶\é\ê€\Ê\Ã\ö(ij\ğ…\Èq F³\õ>¬\nj:Q\ÕBB\ö\Ş\\\öŸ\á/ŠD\İQW0­¦¦FUa!\Ñd½›ah•C¿şş¤«Å¸\ì¼!\ô\ïÿºZŒË¾ÁBşı¢«Å¸\ì\Ä!\ÄH\ß\\†Ë¾ÁB¿\é\\ır\å\Ğo:\ç²\ßC.—ı¥sız\å\Ğ?:—Cÿ†Z.û\Ë@\ß\Ú—}ƒ8\rıEM\õQZ\õ`zÙµFªZ3İ¾¡\Ós\rÓ¬¦«V]o\ä=W\ô\ñ!XH…hT\Ğ\Ô\â57:†\Ö\è†\Ä\è\Z\0\0˜\Î{\ä”øAª\0\0\0\0IEND®B`‚','legendary'),(5,_binary '‰PNG\r\n\Z\n\0\0\0\rIHDR\0\0\0$\0\0\0$\0\0\0\á\0˜˜\0\0\0bKGD\0ÿ\0ÿ\0ÿ ½§“\0\0\0	pHYs\0\0\0\0\0šœ\0\0\0tIME\â\'l¢şh\0\0\0øIDATX\ÃcdÀ\rş3\Ğ0bdbd€W\È>jGS‹m­auÃ ¡ÿ\Ú\Ò\Õ\ö\ö‡Q\Ü2(C\è?\Ã\Ş=6X8»¡ª…„\ìt!\Äcüù…Z\ì¸{e````PSS£ª…°Ø¹ÍšaH”C\ğúı\ó?]-\Æe\ß ¡ÿ\èB8\ì¼!\ô‹\Î!\ôkÈ…\Ğ\ït\Îe?†Z.û\õ\Îi\èû¿\Ñ\Zn!D\ç\\\ö\ë\Çh]6Z—´º\ìZ®9M›¡v\ÖUªZ3\÷\ÏPi1b\ô\\\ë´\èê€¦\×\Ï\ë\èGu´&M-n]z}\è~`\r)z\Û=\èB\0Òƒ_\ñ•\àh\0\0\0\0IEND®B`‚','essential');
+/*!40000 ALTER TABLE `rarity` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `weapon`
 --
 
@@ -131,4 +156,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-06-24 20:00:50
+-- Dump completed on 2022-06-28 18:26:51

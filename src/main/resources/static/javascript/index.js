@@ -25,6 +25,10 @@ async function getElements() {
     return await sendRequest("/elements");
 }
 
+async function getRarities() {
+    return await sendRequest("/rarities");
+}
+
 async function getAbilities(weapon) {
     return await sendRequest(`/abilities/${weapon}`);
 }
@@ -126,8 +130,8 @@ autocomplete(element, () => {
 }, "elements");
 
 autocomplete(rarity, () => {
-    return ["common", "uncommon", "rare", "legendary", "essential"];
-});
+    return getRarities();
+}, "rarities");
 
 autocomplete(projectile1, () => {
     return getProjectiles();
