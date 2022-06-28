@@ -11,52 +11,51 @@ const altAbility = document.getElementById("ability2");
 const projectile2 = document.getElementById("projectile2");
 const result = document.getElementById("result");
 
-function sendRequest(url) {
-    const request = new XMLHttpRequest();
-    request.open("GET", url, false);
-    request.send();
-    var obj = JSON.parse(request.responseText);
-    return  Array.isArray(obj) ? obj : [];
+async function sendRequest(url) {
+    return await fetch(url)
+    .then(response => response.json())
+    .catch(err => console.log("Error: " + err));
 }
 
-function getWeapons() {
-    return sendRequest("http://localhost:8080/weapons")
+async function getWeapons() {
+    return await sendRequest("/weapons")
 }
 
-function getElements() {
-    return sendRequest("http://localhost:8080/elements");
+async function getElements() {
+    return await sendRequest("/elements");
 }
 
-function getAbilities(weapon) {
-    return sendRequest(`http://localhost:8080/abilities/${weapon}`);
+async function getAbilities(weapon) {
+    return await sendRequest(`/abilities/${weapon}`);
 }
 
-function getProjectiles() {
-    return sendRequest("http://localhost:8080/projectiles");
+async function getProjectiles() {
+    return await sendRequest("/projectiles");
 }
 
-function autocomplete(element, callback, image) {
-    var a, b, filtered, array, obj;
+async function autocomplete(element, callback, image) {
     element.addEventListener("input", function(e) {
+        var a, b, filtered;
         closeList();
-        array = callback();
-        
-        a = document.createElement("div");
-        a.setAttribute("class", "autocomplete-items");
-        this.parentNode.appendChild(a);
-        filtered = array.filter(e => e.match(`^${this.value}.*`)).slice(0, 10).sort();
-        filtered.forEach(e => {
-            b = document.createElement("div");
-            b.innerHTML += e;
-            if(image != undefined) b.innerHTML += `<img src="${image}/${e}">`;
-            b.innerHTML += `<input value="${e}" type="hidden">`;
-            b.addEventListener("click", function(e) {
-                element.value = this.getElementsByTagName("input")[0].value;
+        callback().then(array => {
+            array = getNames(array);
+            a = document.createElement("div");
+            a.setAttribute("class", "autocomplete-items");
+            this.parentNode.appendChild(a);
+            filtered = array.filter(e => e.match(`^${this.value}.*`)).slice(0, 10).sort();
+            filtered.forEach(e => {
+                b = document.createElement("div");
+                b.innerHTML += e;
+                if(image != undefined) b.innerHTML += `<img src="${image}/${e}">`;
+                b.innerHTML += `<input value="${e}" type="hidden">`;
+                b.addEventListener("click", function(e) {
+                    element.value = this.getElementsByTagName("input")[0].value;
+                });
+                a.appendChild(b);
             });
-            a.appendChild(b);
-        });
-        a.setAttribute
-
+            a.setAttribute;
+        })
+        .catch(err => console.log("Error: " + err));
     });
     document.addEventListener("click", function (e) {
         closeList();
@@ -93,6 +92,16 @@ function generate() {
     })
 }
 
+function getNames(array) {
+    if(array === undefined) return;
+    if(typeof(array[0]) === "object") {
+        return array.map(e => e.name);
+    }
+    if(typeof(array[0] === "string")) {
+        return array;
+    }
+}
+
 function copy() {
     navigator.clipboard.writeText(document.getElementById("result").value);
 }
@@ -109,11 +118,11 @@ function valid(variable) {
 }
 
 autocomplete(weapontype, () => {
-    return getWeapons().map(e => e.name);
+    return getWeapons();
 });
 
 autocomplete(element, () => {
-    return getElements().map(e => e.name);
+    return getElements();
 }, "elements");
 
 autocomplete(rarity, () => {
@@ -121,20 +130,20 @@ autocomplete(rarity, () => {
 });
 
 autocomplete(projectile1, () => {
-    return getProjectiles().map(e => e.name);
+    return getProjectiles();
 }, "projectiles");
 
 autocomplete(projectile2, () => {
-    return getProjectiles().map(e => e.name);
+    return getProjectiles();
 }, "projectiles");
 
 
 autocomplete(altAbility, () => {
-    return getAbilities(weapontype.value).map(e => e.name);
+    return getAbilities(weapontype.value);
 });
 
 autocomplete(primaryAbility, () => {
-    return getAbilities(weapontype.value).map(e => e.name);
+    return getAbilities(weapontype.value);
 });
 
 generate();
