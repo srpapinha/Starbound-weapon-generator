@@ -14,7 +14,7 @@
     <div class="container">
         <h1 class="title">Starbound Weapon Generator</h1>
         <div class="autocomplete">
-            <input type="text" placeholder="Weapon type (shortsword, pistol, etc...)" id="weapontype">
+            <input type="text" placeholder="Weapon type (shortsword, pistol, etc...)" id="weapontype" value="broadsword">
         </div>
         <div class="autocomplete">
             <input type="text" placeholder="Description" id="description">
@@ -26,39 +26,33 @@
             <input type="text" placeholder="Base DPS" id="damage">
         </div>
         <div class="autocomplete">
-            <input type="text" placeholder="Fire Time (leave blank)" id="firetime">
-        </div>
-        <div class="autocomplete">
             <input type="text" placeholder="Level (1 - 8)" id="level">
         </div>
         <div class="autocomplete">
             <input type="text" placeholder="Rarity (uncommon, common, etc...)" id="rarity">
         </div>
         <div class="autocomplete">
-            <input type="text" placeholder="First ability (only for wands and staffs)" , id="ability1">
+            <input type="text" placeholder="First ability (only for wands and staffs)" id="ability1">
         </div>
         <div class="autocomplete">
-            <input type="text" placeholder="Projectile type in first ability (only for ranged weapons)" , id="projectile1">
+            <input type="text" placeholder="Projectile type in first ability (only for ranged weapons)" id="projectile1">
         </div>
 
         <div class="autocomplete">
-            <input type="text" placeholder="Second ability (must specify weapon and only for two handed)" , id="ability2">
+            <input type="text" placeholder="Second ability (must specify weapon and only for two handed)" id="ability2">
         </div>
         <div class="autocomplete">
-            <input type="text" placeholder="Projectile type in second ability (only for ranged weapons)" , id="projectile2">
+            <input type="text" placeholder="Projectile type in second ability (only for ranged weapons)" id="projectile2">
         </div>
         <div class="autocomplete">
             <input type="text" id="result" placeholder="/spawnitem">
         </div>
         <div class="buttons">
             <button class="button" id="generate">Generate</button>
-            <button class="button" id="copy" onclick="copy()">Copy</button>
+            <button class="button" id="copy">Copy</button>
         </div>
     </div>
-
-    <script src="javascript/index.js"></script>
-    <script src="javascript/ability/Ability.js"></script>
-    <script src="javascript/weapon/Weapon.js"></script>
+    <script src="javascript/view/View.js" type="module"></script>
 </body>
 
 </html>
