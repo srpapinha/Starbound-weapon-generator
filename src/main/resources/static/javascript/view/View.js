@@ -31,8 +31,14 @@ document.getElementById("projectile2").addEventListener("input", function(e) {
     controller.autocomplete(this, controller.projectiles, "/projectiles");
 });
 
+document.getElementById("weapontype").addEventListener("input", function(e) {
+    controller.enableValidFields();
+});
+
 document.addEventListener("click", controller.closeList);
 document.getElementById("generate").addEventListener("click", function(e) {
-    controller.generate();
+    controller.generateCommand();
 });
-document.getElementById("copy").addEventListener("click", controller.copy);
+document.getElementById("copy").addEventListener("click", function(e) {
+    controller.copyToClipboard();
+});

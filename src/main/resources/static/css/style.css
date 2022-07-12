@@ -47,6 +47,10 @@ input[type=text] {
     width: 100%
 }
 
+input[type=text]:disabled {
+    background-color: #d2d2d2;
+}
+
 .buttons {
     display: block;
     text-align: center;

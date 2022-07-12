@@ -10,7 +10,7 @@ export class Ability {
     isEmpty() {
         return this.baseDps === undefined && this.projectileType === undefined;
     }
-
+    
     valid(variable) {
         if (variable === null) return undefined;
         if (typeof variable === "string" && variable.length === 0) {

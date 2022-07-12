@@ -26,40 +26,70 @@ export class Controller {
         return undefined;
     }
 
-    weaponExists() {
-        return this.getNames(this.weapons).includes(document.getElementById("weapontype").value);
+    getNamesFromObjects(array) {
+        if(array === undefined) return;
+        if(typeof array[0] === "string") return array;
+        if(typeof array[0] === "object") return array.map(e => e.name);
     }
 
-    getNames(array) {
-        if (array === undefined) return;
-        if (typeof (array[0]) === "object") {
-            return array.map(e => e.name);
-        }
-        if (typeof (array[0] === "string")) {
-            return array;
-        }
+    weaponExists() {
+        return this.getNamesFromObjects(this.weapons).includes(document.getElementById("weapontype").value);
     }
 
     autocomplete(element, array, image) {
-        var parent, child, filtered, array;
+        var parent, child, controllerObject = this;
         this.closeList();
     
         parent = document.createElement("div");
         parent.setAttribute("class", "autocomplete-items");
         element.parentNode.appendChild(parent);
 
-        array = this.getNames(array);
-        filtered = array.filter(e => e.match(`^${element.value}.*`)).slice(0, 10).sort();
-        filtered.forEach(e => {
+        array = this.getNamesFromObjects(array);
+        array = array.filter(e => e.match(`^${element.value}.*`)).slice(0, 10);
+        array.forEach(e => {
             child = document.createElement("div");
             child.innerHTML += e;
             if (image != undefined) child.innerHTML += `<img src="${image}/${e}">`;
             child.innerHTML += `<input value="${e}" type="hidden">`;
-            child.addEventListener("click", function (e) {
+            child.addEventListener("click", function(e) {
                 element.value = this.getElementsByTagName("input")[0].value;
+                controllerObject.enableValidFields();
             });
             parent.appendChild(child);
         });
+    }
+
+    enableValidFields() {
+        var weapon, ability1, ability2, projectile1, projectile2;
+        weapon = this.weapons.find(e => document.getElementById("weapontype").value === e.name);
+
+        ability1 = document.getElementById("ability1");
+        ability2 = document.getElementById("ability2");
+        projectile1 = document.getElementById("projectile1");
+        projectile2 = document.getElementById("projectile2");
+
+        ability1.disabled = true;
+        ability2.disabled = true;
+        projectile1.disabled = true;
+        projectile2.disabled = true;
+
+        if(weapon === undefined) return;
+
+        switch(weapon.weaponType) {
+            case "melee":
+                ability2.disabled = false;
+                break;
+            case "ranged":
+                ability2.disabled = false;
+                projectile1.disabled = false;
+                projectile2.disabled = false;
+                break;
+
+            case "magic":
+                ability1.disabled = false;
+                if(weapon.twoHanded)  ability2.disabled = false;
+                break;
+        }
     }
 
     closeList() {
@@ -69,7 +99,7 @@ export class Controller {
         }
     }
 
-    generate() {
+    generateCommand() {
         if (!this.weaponExists()) {
             alert("Choose a valid weapon");
             return;
@@ -82,7 +112,7 @@ export class Controller {
         document.getElementById("result").value = `/spawnitem rare${document.getElementById("weapontype").value} 1 '${JSON.stringify(weapon)}'`;
     }
 
-    copy() {
+    copyToClipboard() {
         navigator.clipboard.writeText(document.getElementById("result").value);
     }
 }
